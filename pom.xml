@@ -81,16 +81,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
-            <!-- Plugin to enable `spring-boot:run` and packaging -->
+			<!-- Plugin to enable `spring-boot:run` and packaging -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version> <!-- or the version you're using -->
+    <configuration>
+      <mainClass>com.smartbalaram.auth.AuthServiceApplication</mainClass> <!-- ✅ Change as per your main class -->
+    </configuration>
             </plugin>
 
-            <!-- Ensure Java 17 is used for compilation -->
+			<!-- Ensure Java 17 is used for compilation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -103,7 +106,7 @@
         </plugins>
     </build>
 
-    <!-- Jackson BOM to fix serialization issue with JJWT -->
+	<!-- Jackson BOM to fix serialization issue with JJWT -->
     <dependencyManagement>
         <dependencies>
             <dependency>
