@@ -63,7 +63,7 @@ public class AuthService {
     public AuthResponse login(AuthRequest request) {
     	
     	try {
-    	log.info("🔐 Attempting login for: {}", request.getUsername());
+    	log.info("Request received: username={}, password={}", request.getUsername(), request.getPassword());
         // 🔐 Authenticate credentials using Spring Security
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(

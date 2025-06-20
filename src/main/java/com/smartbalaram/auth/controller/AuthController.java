@@ -5,6 +5,8 @@ import com.smartbalaram.auth.model.AuthResponse;
 import com.smartbalaram.auth.model.RegisterRequest;
 import com.smartbalaram.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor // Generates constructor for final fields (authService)
+@Slf4j // Lombok annotation for logging
 public class AuthController {
 
     private final AuthService authService;
@@ -40,6 +43,7 @@ public class AuthController {
      */
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+    	log.info("🔐 Attempting login for: {}", request.getUsername());
         return ResponseEntity.ok(authService.login(request));
     }
 }
