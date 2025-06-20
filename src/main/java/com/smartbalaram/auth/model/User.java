@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @Id
     private String id;
     @Indexed(unique = true)
-    private String email;    // Used as username
+    private String username;    // Used as username
     private String password; // Encrypted password (BCrypt, etc.)
     private String role;     // Example: "ADMIN", "USER"
 
@@ -40,7 +40,7 @@ public class User implements UserDetails {
 
     // Used by Spring Security during login and validation checks
 
-    @Override public String getUsername() { return email; }
+    @Override public String getUsername() { return username; }
 
     @Override public boolean isAccountNonExpired() { return true; }
 

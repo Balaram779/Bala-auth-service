@@ -9,5 +9,5 @@ import java.util.Optional;
  * Repository to interact with MongoDB for User documents.
  */
 public interface UserRepository extends MongoRepository<User, String> {
-    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String email);
 }

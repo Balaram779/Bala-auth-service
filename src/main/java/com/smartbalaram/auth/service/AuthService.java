@@ -41,14 +41,14 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request) {
         // ✅ Build user entity
     	User user = User.builder()
-                .email(request.getUsername())
+                .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())
                 .build();
 
         // 🗂️ Save to MongoDB
     	User  savedUser=userRepository.save(user);
-        log.info("✅ Registered user: {}", savedUser.getEmail());
+        log.info("✅ Registered user: {}", savedUser.getUsername());
         // 🎟️ Generate JWT
         var jwtToken = jwtService.generateToken(user);
         return new AuthResponse(jwtToken);
@@ -73,7 +73,7 @@ public class AuthService {
         );
 
         // 🧾 Fetch user from DB
-        User user = userRepository.findByEmail(request.getUsername())
+        User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // 🎟️ Generate JWT
