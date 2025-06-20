@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/authdb
+      uri: mongodb+srv://b9048635:p1pPLXpUFQGMSSId@cluster0.man4orn.mongodb.net/authdb?retryWrites=true&w=majority&appName=Cluster0
       database: authdb
 
 jwt:
